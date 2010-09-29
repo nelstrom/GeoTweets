@@ -1,0 +1,12 @@
+/*Stylesheet for geotweets.*/
+.tweet {
+  float: left;
+  width: 100%;
+  margin-top: 12px;
+  margin-left: 12px;
+}
+.tweet .avatar img {
+  float: left;
+  width: 48px;
+  margin-right: 12px;
+}
