@@ -4,9 +4,22 @@
   width: 100%;
   margin-top: 12px;
   margin-left: 12px;
+  position: relative;
 }
-.tweet .avatar img {
-  float: left;
-  width: 48px;
-  margin-right: 12px;
+.tweet .avatar {
+  position: absolute;
+  top:0; left: 0;
+  width: 60px;
+}
+.tweet-content {
+  position: relative;
+  top: 0; left: 60px;
+  padding-right: 80px;
+}
+.tweet-content h2 {
+  font-size: 100%;
+  font-weight: bold;
+}
+.tweet-content p {
+  font-size: 80%;
 }
