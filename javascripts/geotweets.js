@@ -35,6 +35,18 @@ Ext.setup({
 			items: [map, timeline]
 		});
 
+		var tabBar = panel.getTabBar();
+		tabBar.addDocked({
+			xtype: 'button',
+			ui: 'plain',
+			iconMask: true,
+			iconCls: 'refresh',
+			dock: 'right',
+			stretch: false,
+			align: 'center',
+			handler: refresh
+		});
+
 		var refresh = function() {
 			var coords = map.geo.coords;
 
@@ -74,18 +86,6 @@ Ext.setup({
 		};
 
 		map.geo.on('update', refresh);
-
-		var tabBar = panel.getTabBar();
-		tabBar.addDocked({
-			xtype: 'button',
-			ui: 'plain',
-			iconMask: true,
-			iconCls: 'refresh',
-			dock: 'right',
-			stretch: false,
-			align: 'center',
-			handler: refresh
-		});
 
 	}
 });
