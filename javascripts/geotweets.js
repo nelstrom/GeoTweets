@@ -5,7 +5,7 @@ Ext.setup({
 	glossOnIcon: false,
 	onReady: function() {
 
-		var timeline, map, panel, tabBar, refresh, addMarker;
+		var timeline, map, panel, tabBar, refresh, addMarker, tweetBubble;
 
 		timeline = new Ext.Component({
 			title: 'Timeline',
@@ -75,7 +75,6 @@ Ext.setup({
 			});
 		};
 
-		// These are all Google Maps APIs
 		addMarker = function(tweet) {
 			var position = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
 
@@ -84,14 +83,15 @@ Ext.setup({
 				position: position
 			});
 
-			var overlay = new google.maps.InfoWindow({
-				content: tweet.text
-			});
-
 			google.maps.event.addListener(marker, "click", function() {
-				overlay.open(map.map, marker);
+				tweetBubble.setContent(tweet.text);
+				tweetBubble.open(map.map, marker);
 			});
 		};
+
+		tweetBubble = new google.maps.InfoWindow({
+			content: "lorem ipsum dolor sit amet"
+		});
 
 		map.geo.on('update', refresh);
 
