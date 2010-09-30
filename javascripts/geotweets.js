@@ -59,12 +59,12 @@ Ext.setup({
 					rpp: 30
 				},
 				callback: function(data) {
-					tweet_list = data.results;
-					timeline.update(tweet_list);	// Update the tweets in timeline
+					var tweetList = data.results;
+					timeline.update(tweetList);	// Update the tweets in timeline
 
 					// Add points to the map
-					for (var i = 0, ln = tweet_list.length; i < ln; i++) {
-						var tweet = tweet_list[i];
+					for (var i = 0, ln = tweetList.length; i < ln; i++) {
+						var tweet = tweetList[i];
 
 						// If the tweet is geo-tagged, use that to display marker
 						if (tweet.geo && tweet.geo.coordinates) {
