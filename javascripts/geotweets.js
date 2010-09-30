@@ -30,7 +30,6 @@ Ext.setup({
 			}
 		});
 
-
 		var panel = new Ext.TabPanel({
 			fullscreen: true,
 			animation: 'slide',
@@ -50,11 +49,13 @@ Ext.setup({
 		});
 
 		var refresh = function() {
+			var coords = map.geo.coords;
+
 			Ext.util.JSONP.request({
 				url: 'http://search.twitter.com/search.json',
 				callbackKey: 'callback',
 				params: {
-					q: "sencha touch",
+					geocode: coords.latitude + ',' + coords.longitude + ',' + '5mi',
 					rpp: 30
 				},
 				callback: function(data) {
