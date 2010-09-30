@@ -4,26 +4,27 @@ Ext.setup({
 	icon: 'icon.png',
 	glossOnIcon: false,
 	onReady: function() {
+		var timeline, map, panel, tabBar;
 
-		var timeline = {
+		timeline = {
 			title: "Timeline",
 			html: "A list of local twits",
 			cls: 'card1'
 		}
 
-		var map = {
+		map = {
 			title: "Map",
 			html: "Here be dragons",
 			cls: 'card2'
 		}
 
-		var panel = new Ext.TabPanel({
+		panel = new Ext.TabPanel({
 			fullscreen: true,
 			animation: 'slide',
 			items: [timeline, map]
 		});
 
-		var tabBar = panel.getTabBar();
+		tabBar = panel.getTabBar();
 		tabBar.addDocked({
 			xtype: 'button',
 			ui: 'plain',
@@ -31,8 +32,7 @@ Ext.setup({
 			iconCls: 'refresh',
 			dock: 'right',
 			stretch: false,
-			align: 'center',
-			handler: refresh	// leave this out until later?
+			align: 'center'
 		});
 
 	}
