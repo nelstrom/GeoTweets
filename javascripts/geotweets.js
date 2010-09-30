@@ -51,7 +51,7 @@ Ext.setup({
 				url: 'http://search.twitter.com/search.json',
 				callbackKey: 'callback',
 				params: {
-					q: "sencha",
+					q: "sencha touch",
 					rpp: 30
 				},
 				callback: function(data) {
