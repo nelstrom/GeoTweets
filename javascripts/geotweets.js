@@ -78,7 +78,8 @@ Ext.setup({
 		var tabBar = panel.getTabBar();
 		tabBar.addDocked({
 			xtype: 'button',
-			ui: 'mask',
+			ui: 'plain',
+			iconMask: true,
 			iconCls: 'refresh',
 			dock: 'right',
 			stretch: false,
