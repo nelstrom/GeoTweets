@@ -79,9 +79,17 @@ Ext.setup({
 		addMarker = function(tweet) {
 			var position = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
 
-			new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				map: map.map,
 				position: position
+			});
+
+			var overlay = new google.maps.InfoWindow({
+				content: tweet.text
+			});
+
+			google.maps.event.addListener(marker, "click", function() {
+				overlay.open(map.map, marker);
 			});
 		};
 
