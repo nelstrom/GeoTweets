@@ -4,8 +4,9 @@ Ext.setup({
 	icon: 'icon.png',
 	glossOnIcon: false,
 	onReady: function() {
+		var timeline, map, panel, tabBar, refresh;
 
-		var timeline = new Ext.Component({
+		timeline = new Ext.Component({
 			title: 'Timeline',
 			cls: 'timeline',
 			scroll: 'vertical',
@@ -22,19 +23,19 @@ Ext.setup({
 			]
 		});
 
-		var map = {
+		map = {
 			title: "Map",
 			html: "Here be dragons",
 			cls: 'card2'
 		}
 
-		var panel = new Ext.TabPanel({
+		panel = new Ext.TabPanel({
 			fullscreen: true,
 			animation: 'slide',
 			items: [timeline, map]
 		});
 
-		var tabBar = panel.getTabBar();
+		tabBar = panel.getTabBar();
 		tabBar.addDocked({
 			xtype: 'button',
 			ui: 'plain',
@@ -46,7 +47,7 @@ Ext.setup({
 			handler: refresh
 		});
 
-		var refresh = function() {
+		refresh = function() {
 			Ext.util.JSONP.request({
 				url: 'http://search.twitter.com/search.json',
 				callbackKey: 'callback',
@@ -55,7 +56,7 @@ Ext.setup({
 					rpp: 30
 				},
 				callback: function(data) {
-					tweet_list = data.results;
+					var tweet_list = data.results;
 					timeline.update(tweet_list);	// Update the tweets in timeline
 				}
 			});
