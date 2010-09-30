@@ -22,11 +22,14 @@ Ext.setup({
 			]
 		});
 
-		var map = {
-			title: "Map",
-			html: "Here be dragons",
-			cls: 'card2'
-		}
+		var map = new Ext.Map({
+			title: 'Map',
+			getLocation: true,
+			mapOptions: {
+				zoom: 12
+			}
+		});
+
 
 		var panel = new Ext.TabPanel({
 			fullscreen: true,
