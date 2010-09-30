@@ -89,9 +89,7 @@ Ext.setup({
 			});
 		};
 
-		tweetBubble = new google.maps.InfoWindow({
-			content: "lorem ipsum dolor sit amet"
-		});
+		tweetBubble = new google.maps.InfoWindow();
 
 		map.geo.on('update', refresh);
 
