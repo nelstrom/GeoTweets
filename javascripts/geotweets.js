@@ -5,7 +5,7 @@ Ext.setup({
 	glossOnIcon: false,
 	onReady: function() {
 
-		var timeline, map, panel, tabBar, refresh, addMarker, tweetBubble;
+		var timeline, mapPanel, panel, tabBar, refresh, addMarker, tweetBubble;
 
 		timeline = new Ext.Component({
 			title: 'Timeline',
@@ -24,7 +24,7 @@ Ext.setup({
 			]
 		});
 
-		map = new Ext.Map({
+		mapPanel = new Ext.Map({
 			title: 'Map',
 			getLocation: true,
 			mapOptions: {
@@ -35,7 +35,7 @@ Ext.setup({
 		panel = new Ext.TabPanel({
 			fullscreen: true,
 			animation: 'slide',
-			items: [map, timeline]
+			items: [mapPanel, timeline]
 		});
 
 		tabBar = panel.getTabBar();
@@ -51,7 +51,7 @@ Ext.setup({
 		});
 
 		refresh = function() {
-			var coords = map.geo.coords;
+			var coords = mapPanel.geo.coords;
 
 			Ext.util.JSONP.request({
 				url: 'http://search.twitter.com/search.json',
@@ -76,22 +76,22 @@ Ext.setup({
 		};
 
 		addMarker = function(tweet) {
-			var position = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
+			var latLng = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
 
 			var marker = new google.maps.Marker({
-				map: map.map,
-				position: position
+				map: mapPanel.map,
+				position: latLng
 			});
 
 			google.maps.event.addListener(marker, "click", function() {
 				tweetBubble.setContent(tweet.text);
-				tweetBubble.open(map.map, marker);
+				tweetBubble.open(mapPanel.map, marker);
 			});
 		};
 
 		tweetBubble = new google.maps.InfoWindow();
 
-		map.geo.on('update', refresh);
+		mapPanel.geo.on('update', refresh);
 
 	}
 });
