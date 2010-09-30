@@ -35,7 +35,7 @@ Ext.setup({
 		panel = new Ext.TabPanel({
 			fullscreen: true,
 			animation: 'slide',
-			items: [timeline, map]
+			items: [map, timeline]
 		});
 
 		tabBar = panel.getTabBar();
