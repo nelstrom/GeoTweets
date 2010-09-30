@@ -5,7 +5,9 @@ Ext.setup({
 	glossOnIcon: false,
 	onReady: function() {
 
-		var timeline = new Ext.Component({
+		var timeline, map, panel, tabBar, refresh, addMarker;
+
+		timeline = new Ext.Component({
 			title: 'Timeline',
 			cls: 'timeline',
 			scroll: 'vertical',
@@ -22,7 +24,7 @@ Ext.setup({
 			]
 		});
 
-		var map = new Ext.Map({
+		map = new Ext.Map({
 			title: 'Map',
 			getLocation: true,
 			mapOptions: {
@@ -30,13 +32,13 @@ Ext.setup({
 			}
 		});
 
-		var panel = new Ext.TabPanel({
+		panel = new Ext.TabPanel({
 			fullscreen: true,
 			animation: 'slide',
 			items: [timeline, map]
 		});
 
-		var tabBar = panel.getTabBar();
+		tabBar = panel.getTabBar();
 		tabBar.addDocked({
 			xtype: 'button',
 			ui: 'plain',
@@ -48,7 +50,7 @@ Ext.setup({
 			handler: refresh
 		});
 
-		var refresh = function() {
+		refresh = function() {
 			var coords = map.geo.coords;
 
 			Ext.util.JSONP.request({
@@ -65,11 +67,8 @@ Ext.setup({
 					// Add points to the map
 					for (var i = 0, ln = tweetList.length; i < ln; i++) {
 						var tweet = tweetList[i];
-
-						// If the tweet is geo-tagged, use that to display marker
 						if (tweet.geo && tweet.geo.coordinates) {
-							var position = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
-							addMarker(tweet, position);
+							addMarker(tweet);
 						}
 					}
 				}
@@ -77,8 +76,10 @@ Ext.setup({
 		};
 
 		// These are all Google Maps APIs
-		var addMarker = function(tweet, position) {
-			var marker = new google.maps.Marker({
+		addMarker = function(tweet) {
+			var position = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
+
+			new google.maps.Marker({
 				map: map.map,
 				position: position
 			});
