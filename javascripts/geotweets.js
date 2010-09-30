@@ -61,10 +61,30 @@ Ext.setup({
 				callback: function(data) {
 					tweet_list = data.results;
 					timeline.update(tweet_list);	// Update the tweets in timeline
+
+					// Add points to the map
+					for (var i = 0, ln = tweet_list.length; i < ln; i++) {
+						var tweet = tweet_list[i];
+
+						// If the tweet is geo-tagged, use that to display marker
+						if (tweet.geo && tweet.geo.coordinates) {
+							var position = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
+							addMarker(tweet, position);
+						}
+					}
 				}
 			});
 		};
 
-		refresh();
+		// These are all Google Maps APIs
+		var addMarker = function(tweet, position) {
+			var marker = new google.maps.Marker({
+				map: map.map,
+				position: position
+			});
+		};
+
+		map.geo.on('update', refresh);
+
 	}
 });
