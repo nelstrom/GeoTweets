@@ -20,7 +20,7 @@ Ext.setup({
 
 		panel = new Ext.TabPanel({
 			fullscreen: true,
-			animation: 'slide',
+			cardSwitchAnimation: 'slide',
 			items: [timeline, map]
 		});
 
