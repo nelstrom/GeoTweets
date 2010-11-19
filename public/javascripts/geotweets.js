@@ -21,19 +21,21 @@ Ext.setup({
 		panel = new Ext.TabPanel({
 			fullscreen: true,
 			cardSwitchAnimation: 'slide',
+			ui: 'light',
 			items: [timeline, map]
 		});
 
-		tabBar = panel.getTabBar();
-		tabBar.addDocked({
-			xtype: 'button',
-			ui: 'plain',
-			iconMask: true,
-			iconCls: 'refresh',
-			dock: 'right',
-			stretch: false,
-			align: 'center'
-		});
+		panel.getTabBar().add([
+			{xtype: 'spacer'},
+			{
+				xtype: 'button',
+				iconMask: true,
+				iconCls: 'refresh',
+				ui: 'plain',
+				style: 'margin:0;'
+			}
+		]);
+		panel.getTabBar().doLayout();
 
 	}
 });
