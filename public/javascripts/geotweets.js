@@ -26,7 +26,7 @@ Ext.setup({
 
 		mapPanel = new Ext.Map({
 			title: 'Map',
-			getLocation: true,
+			useCurrentLocation: true,
 			mapOptions: {
 				zoom: 12
 			}
