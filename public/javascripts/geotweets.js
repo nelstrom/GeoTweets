@@ -53,7 +53,7 @@ Ext.setup({
 				from_user: "nelstrom",
 				profile_image_url: "http://bit.ly/nelstrom-avatar"
 			};
-			var tweets = [tweet,tweet,tweet,tweet,tweet,tweet,tweet]
+			var tweet_list = [tweet,tweet,tweet,tweet,tweet,tweet,tweet]
 			timeline.update(tweet_list);	// Update the tweets in timeline
 		};
 
