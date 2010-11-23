@@ -36,19 +36,6 @@ Ext.setup({
 			items: [timeline, map]
 		});
 
-		panel.getTabBar().add([
-			{xtype: 'spacer'},
-			{
-				xtype: 'button',
-				iconMask: true,
-				iconCls: 'refresh',
-				ui: 'plain',
-				style: 'margin:0;',
-				handler: refresh
-			}
-		]);
-		panel.getTabBar().doLayout();
-
 		refresh = function() {
 			Ext.util.JSONP.request({
 				url: 'http://search.twitter.com/search.json',
@@ -64,6 +51,19 @@ Ext.setup({
 				}
 			});
 		};
+
+		panel.getTabBar().add([
+			{xtype: 'spacer'},
+			{
+				xtype: 'button',
+				iconMask: true,
+				iconCls: 'refresh',
+				ui: 'plain',
+				style: 'margin:0;',
+				handler: refresh
+			}
+		]);
+		panel.getTabBar().doLayout();
 
 		refresh();
 	}
