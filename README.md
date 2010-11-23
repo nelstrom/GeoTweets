@@ -20,10 +20,10 @@ Change into the directory:
 
 By default, the `git clone` command will only create the master branch locally. If you want to study the code at each checkpoint, you will have to fetch each of the other branches. You can do so by running the following:
 
-    1 git push 01_gui origin/01_gui
-    2 git push 02_static origin/02_static
-    3 git push 03_dynamic origin/03_dynamic
-    4 git push 04_map origin/04_map
+    git checkout -b 01_gui origin/01_gui
+    git checkout -b 02_static origin/02_static
+    git checkout -b 03_dynamic origin/03_dynamic
+    git checkout -b 04_map origin/04_map
 
 You can review the list of local branches by running:
 
