@@ -5,7 +5,7 @@ Ext.setup({
 	glossOnIcon: false,
 	onReady: function() {
 
-		var timeline, mapPanel, panel, tabBar, refresh, addMarker, tweetBubble;
+		var timeline, mapPanel, panel, tabBar, refresh, addMarker, clearMarkers, tweetBubble, markers=[];
 
 		timeline = new Ext.Component({
 			title: 'Timeline',
@@ -54,6 +54,7 @@ Ext.setup({
 					var tweetList = data.results;
 					timeline.update(tweetList);	// Update the tweets in timeline
 
+					clearMarkers();
 					// Add points to the map
 					for (var i = 0, ln = tweetList.length; i < ln; i++) {
 						var tweet = tweetList[i];
@@ -85,11 +86,19 @@ Ext.setup({
 				map: mapPanel.map,
 				position: latLng
 			});
+			markers.push(marker);
 
 			google.maps.event.addListener(marker, "click", function() {
 				tweetBubble.setContent(tweet.text);
 				tweetBubble.open(mapPanel.map, marker);
 			});
+		};
+
+		clearMarkers = function() {
+			for (var i=0; i < markers.length; i++) {
+				markers[i].setMap(null); // remove markers from map
+			};
+			markers = [];
 		};
 
 		tweetBubble = new google.maps.InfoWindow();
