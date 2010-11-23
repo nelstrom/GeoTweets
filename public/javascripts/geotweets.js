@@ -47,7 +47,8 @@ Ext.setup({
 				callbackKey: 'callback',
 				params: {
 					geocode: coords.latitude + ',' + coords.longitude + ',' + '5mi',
-					rpp: 30
+					rpp: 30,
+					uniqueify: Math.random()
 				},
 				callback: function(data) {
 					var tweetList = data.results;
