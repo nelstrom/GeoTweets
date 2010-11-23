@@ -54,8 +54,9 @@ Ext.setup({
 				url: 'http://search.twitter.com/search.json',
 				callbackKey: 'callback',
 				params: {
-					q: "sencha touch",
-					rpp: 30
+					q: "bored",
+					rpp: 30,
+					uniqueify: Math.random()
 				},
 				callback: function(data) {
 					var tweet_list = data.results;
