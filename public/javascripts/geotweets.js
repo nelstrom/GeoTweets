@@ -39,19 +39,6 @@ Ext.setup({
 			items: [mapPanel, timeline]
 		});
 
-		panel.getTabBar().add([
-			{xtype: 'spacer'},
-			{
-				xtype: 'button',
-				iconMask: true,
-				iconCls: 'refresh',
-				ui: 'plain',
-				style: 'margin:0;',
-				handler: refresh
-			}
-		]);
-		panel.getTabBar().doLayout();
-
 		refresh = function() {
 			var coords = mapPanel.geo.coords;
 
@@ -76,6 +63,19 @@ Ext.setup({
 				}
 			});
 		};
+
+		panel.getTabBar().add([
+			{xtype: 'spacer'},
+			{
+				xtype: 'button',
+				iconMask: true,
+				iconCls: 'refresh',
+				ui: 'plain',
+				style: 'margin:0;',
+				handler: refresh
+			}
+		]);
+		panel.getTabBar().doLayout();
 
 		addMarker = function(tweet) {
 			var latLng = new google.maps.LatLng(tweet.geo.coordinates[0], tweet.geo.coordinates[1]);
