@@ -1,8 +1,11 @@
 Ext.define('GeoTweets.view.Viewport', {
-    extend: 'Ext.List',
+    extend: 'Ext.TabPanel',
     
     config: {
         fullscreen: true,
-        items: []
+        items: [
+            { xtype: 'timeline' },
+            { xtype: 'map' },
+        ]
     }
 });
