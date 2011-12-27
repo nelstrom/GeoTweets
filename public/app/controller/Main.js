@@ -23,9 +23,11 @@ Ext.define('GeoTweets.controller.Main', {
     },
 
     fetchTweets: function() {
-        var store = this.getTimeline().getStore();
+        var store = this.getTimeline().getStore(),
+            coords = this.getLocalmap()._geo.config,
+            geocode = coords.latitude + ',' + coords.longitude + ',' + '5mi';
 
-        store.getProxy().setExtraParam('q', 'sencha touch');
+        store.getProxy().setExtraParam('geocode', geocode);
         store.load();
     },
 
