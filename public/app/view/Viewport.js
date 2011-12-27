@@ -4,7 +4,10 @@ Ext.define('GeoTweets.view.Viewport', {
     config: {
         fullscreen: true,
         items: [
-            { xtype: 'timeline' },
+            {
+                xtype: 'timeline',
+                store: Ext.create('GeoTweets.store.Tweets')
+            },
             { xtype: 'localmap' },
         ]
     }
