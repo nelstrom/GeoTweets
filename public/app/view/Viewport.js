@@ -22,6 +22,7 @@ Ext.define('GeoTweets.view.Viewport', {
             {xtype: 'spacer'},
             {
                 xtype: 'button',
+                action: 'refresh',
                 iconMask: true,
                 iconCls: 'refresh',
                 ui: 'plain'

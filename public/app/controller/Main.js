@@ -3,8 +3,16 @@ Ext.define('GeoTweets.controller.Main', {
     
     models: ['Tweet'],
     views: ['Viewport', 'Timeline', 'Map'],
-    refs: [],
-    
-    init: function() {},
 
+    init: function() {
+        this.control({
+            'button[action=refresh]': {
+                tap: 'fetchTweets'
+            }
+        })
+    },
+
+    fetchTweets: function() {
+        console.log('Fetching results from Twitter...')
+    }
 });
