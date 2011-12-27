@@ -28,10 +28,24 @@ Ext.define('GeoTweets.controller.Main', {
             geocode = coords.latitude + ',' + coords.longitude + ',' + '5mi';
 
         store.getProxy().setExtraParam('geocode', geocode);
-        store.load();
+        store.load({
+            scope: this,
+            callback: function(records, operation, success) {
+                this.updateMap(records);
+            }
+        });
     },
 
-    updateMap: function() {
+    updateMap: function(tweetlist) {
+        console.log('updating map...')
+
+        for (var i = 0, ln = tweetlist.length; i < ln; i++) {
+            var tweet = tweetlist[i];
+            console.log(tweet.data.geo);
+            if (tweet.geo && tweet.geo.coordinates) {
+                addMarker(tweet);
+            }
+        }
         
     }
 });
