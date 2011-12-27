@@ -3,6 +3,9 @@ Ext.define('GeoTweets.view.Viewport', {
     
     config: {
         fullscreen: true,
+        tabBar: {
+            ui: 'light'
+        },
         items: [
             {
                 xtype: 'timeline',
@@ -10,5 +13,20 @@ Ext.define('GeoTweets.view.Viewport', {
             },
             { xtype: 'localmap' },
         ]
+    },
+
+    constructor: function() {
+        this.callParent();
+
+        this.getTabBar().add([
+            {xtype: 'spacer'},
+            {
+                xtype: 'button',
+                iconMask: true,
+                iconCls: 'refresh',
+                ui: 'plain'
+            }
+        ]);
     }
+
 });
