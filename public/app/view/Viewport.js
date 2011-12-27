@@ -9,6 +9,7 @@ Ext.define('GeoTweets.view.Viewport', {
         items: [
             {
                 xtype: 'timeline',
+                id: 'timeline',
                 store: Ext.create('GeoTweets.store.Tweets')
             },
             { xtype: 'localmap' },

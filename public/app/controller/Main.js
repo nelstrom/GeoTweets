@@ -3,6 +3,12 @@ Ext.define('GeoTweets.controller.Main', {
     
     models: ['Tweet'],
     views: ['Viewport', 'Timeline', 'Map'],
+    refs: [
+        {
+            ref: 'timeline',
+            selector: '#timeline'
+        }
+    ],
 
     init: function() {
         this.control({
@@ -13,6 +19,6 @@ Ext.define('GeoTweets.controller.Main', {
     },
 
     fetchTweets: function() {
-        console.log('Fetching results from Twitter...')
+        this.getTimeline().getStore().load();
     }
 });
