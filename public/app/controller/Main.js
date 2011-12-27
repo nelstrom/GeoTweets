@@ -7,7 +7,11 @@ Ext.define('GeoTweets.controller.Main', {
         {
             ref: 'timeline',
             selector: '#timeline'
-        }
+        },
+        {
+            ref: 'localmap',
+            selector: '#localmap'
+        },
     ],
 
     init: function() {
@@ -19,6 +23,13 @@ Ext.define('GeoTweets.controller.Main', {
     },
 
     fetchTweets: function() {
-        this.getTimeline().getStore().load();
+        var store = this.getTimeline().getStore();
+
+        store.getProxy().setExtraParam('q', 'sencha touch');
+        store.load();
+    },
+
+    updateMap: function() {
+        
     }
 });

@@ -7,8 +7,7 @@ Ext.define('GeoTweets.store.Tweets', {
         type: 'jsonp',
         url: 'http://search.twitter.com/search.json',
         extraParams: {
-            rpp: 30,
-            q: 'bored'
+            rpp: 30
         },
         reader: {
             root: 'results'
