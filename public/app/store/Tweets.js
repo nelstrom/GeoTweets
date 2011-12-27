@@ -7,20 +7,5 @@ Ext.define('GeoTweets.store.Tweets', {
             from_user: "nelstrom",
             profile_image_url: "http://bit.ly/nelstrom-avatar"
         },
-        {
-            text: "Lorem ipsum dolor sit amet",
-            from_user: "nelstrom",
-            profile_image_url: "http://bit.ly/nelstrom-avatar"
-        },
-        {
-            text: "Lorem ipsum dolor sit amet",
-            from_user: "nelstrom",
-            profile_image_url: "http://bit.ly/nelstrom-avatar"
-        },
-        {
-            text: "Lorem ipsum dolor sit amet",
-            from_user: "nelstrom",
-            profile_image_url: "http://bit.ly/nelstrom-avatar"
-        },
     ]
 });
