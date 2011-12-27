@@ -5,7 +5,7 @@ Ext.define('GeoTweets.view.Viewport', {
         fullscreen: true,
         items: [
             { xtype: 'timeline' },
-            { xtype: 'map' },
+            { xtype: 'localmap' },
         ]
     }
 });

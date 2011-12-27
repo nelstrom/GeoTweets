@@ -1,7 +1,8 @@
 Ext.define('GeoTweets.view.Map', {
     extend: 'Ext.Map',
-    xtype: 'map',
+    xtype: 'localmap',
     config: {
-        title: 'Map'
+        title: 'Map',
+        useCurrentLocation: true
     }
 })
