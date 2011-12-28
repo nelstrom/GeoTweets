@@ -10,9 +10,6 @@ Ext.define('GeoTweets.view.Map', {
         this.callParent(arguments);
 
         this._geo.setAutoUpdate(false);
-        this._geo.on('locationupdate', function() {
-            console.log('updating location')
-        })
     }
 
 })

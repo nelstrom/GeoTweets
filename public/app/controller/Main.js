@@ -20,6 +20,20 @@ Ext.define('GeoTweets.controller.Main', {
                 tap: 'fetchTweets'
             }
         });
+    },
+
+    launch: function() {
+        var localmap = this.getLocalmap();
+        localmap._geo.on('locationupdate', function(geo) {
+            console.log('Location updated: ' + geo.latitude + ", " + geo.longitude)
+            // this.fetchTweets()
+        });
+        localmap._geo.on('locationerror', function() {
+            console.error('Location failed to update.')
+        });
+        localmap._geo.updateLocation(function(geo) {
+            console.log('Manually updated location');
+        });
         window.tweetBubble = new google.maps.InfoWindow();
         window.mapPanel = this.getLocalmap();
     },
