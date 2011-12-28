@@ -22,20 +22,6 @@ Ext.define('GeoTweets.controller.Main', {
         });
     },
 
-    launch: function() {
-        var localmap = this.getLocalmap();
-        localmap._geo.on('locationupdate', function(geo) {
-            console.log('Location updated: ' + geo.latitude + ", " + geo.longitude)
-            // this.fetchTweets()
-        });
-        localmap._geo.on('locationerror', function() {
-            console.error('Location failed to update.')
-        });
-        localmap._geo.updateLocation(function(geo) {
-            console.log('Manually updated location');
-        });
-    },
-
     fetchTweets: function() {
         var store = this.getTimeline().getStore(),
             coords = this.getLocalmap()._geo.config,
