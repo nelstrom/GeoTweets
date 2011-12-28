@@ -13,6 +13,15 @@ Ext.define('GeoTweets.view.Map', {
         this.infoBox = new google.maps.InfoWindow();
     },
 
+    processTweets: function(tweetlist) {
+        for (var i = 0, ln = tweetlist.length; i < ln; i++) {
+            var tweet = tweetlist[i].data;
+            if (tweet.geo && tweet.geo.coordinates) {
+                this.addMarker(tweet);
+            }
+        }
+    },
+
     addMarker: function(tweet) {
         var infoWindow = this.infoBox,
         point = new google.maps.LatLng(

@@ -34,8 +34,6 @@ Ext.define('GeoTweets.controller.Main', {
         localmap._geo.updateLocation(function(geo) {
             console.log('Manually updated location');
         });
-        window.tweetBubble = new google.maps.InfoWindow();
-        window.mapPanel = this.getLocalmap();
     },
 
     fetchTweets: function() {
@@ -46,25 +44,10 @@ Ext.define('GeoTweets.controller.Main', {
         store.getProxy().setExtraParam('geocode', geocode);
         store.load({
             scope: this,
-            callback: function(records, operation, success) {
-                this.updateMap(records);
+            callback: function(records) {
+                this.getLocalmap().processTweets(records)
             }
         });
-    },
-
-    updateMap: function(tweetlist) {
-        console.log('updating map...')
-        
-        for (var i = 0, ln = tweetlist.length; i < ln; i++) {
-            var tweet = tweetlist[i].data;
-
-            if (tweet.geo && tweet.geo.coordinates) {
-                this.getLocalmap().addMarker(tweet);
-            } else {
-                console.log('no geo data')
-            }
-        }
-        
     }
 
 });
