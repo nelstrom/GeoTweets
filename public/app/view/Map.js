@@ -4,5 +4,11 @@ Ext.define('GeoTweets.view.Map', {
     config: {
         title: 'Map',
         useCurrentLocation: true
+    },
+
+    constructor: function() {
+        this.callParent(arguments);
+        this._geo.setAutoUpdate(false);
     }
+
 })
